@@ -1,0 +1,11 @@
+Q. Calculate a moving average over a specific number of rows in SQL
+
+with a as select year(orderDate)years,
+month(orderDate)months,
+sum(revenue)revenue from orders
+group by years,months)
+
+select years,months,reveune,
+avg(revenue)over (order by years,months
+rows between 2 preceding and current row) moving_avg
+from a;
