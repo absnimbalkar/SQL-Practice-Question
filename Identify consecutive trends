@@ -1,0 +1,12 @@
+Q. Identify customers who have made 3 consecutive transactions with an amount greater than 50,000
+
+Syntax :
+
+with a as (select *,
+lag(TransacionAmount , 1) over (partition by CustomerName order by TransactionDate)p_value,
+lead(TransactionAmount,1)
+over(partition by CustomerName order by TransactionDate)n_value
+from transactions)
+
+select customerID,customerName from a where 
+TransactionAmount > 50000 and p_value > 50000 and n_value
