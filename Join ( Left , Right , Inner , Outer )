@@ -1,0 +1,9 @@
+Q. If Table 1 contains 3 Rows with the value 1 and Table 2 contains 2 rows with the value 1 , How many rows will the result contain after performing a Left join
+
+Ans:6 rows 
+
+Syntax : 
+
+select t1.ID , t1.Nuber as N1 , t2.ID , t2.Number as N2
+from table1 as t1 left join table2 as t2
+on t1.Number = t2.Number
