@@ -1,0 +1,23 @@
+Q. How would you calculate a running total,month-to-date(MTD),and year-to-date(YTD) values for a sales column in sql
+
+select OrderDate , Revenue ,
+
+sum(Revenue) over (order by OrderDate) as running_total from orders;
+
+or
+
+with a as (select orders.orderDate, 
+sum(orderdetails.quantityOrdered * orderdetails.priceEach) revenue
+from order join orderdetails
+on orders.orderNumber = orderdetais.orderNumber
+group by orders.orderDate);
+select orderDate ,Revenue,
+sum(revenue)over (order by Orderdate)as Running_total 
+
+or
+
+select orderDate ,Revenue,
+sum(revenue)over (partition by year(OrderDate),month(OrderDate) order by Orderdate)as Running_total 
+
+
+from orders;
