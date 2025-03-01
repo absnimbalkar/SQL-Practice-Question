@@ -1,0 +1,11 @@
+Q, Calculate year-over-year(YOY) percentage growth
+
+with a as(select year(OrderDate)years , sum (Revenue) Revenue 
+from orders group by year (OrderDate));
+
+select years,revenue,p_rev,
+((revenue - p_rev)/p_rev)*100 yoy_growth
+from
+(select years , revenue,
+lag(revenue , 1)over (order by years)p_rev
+from a)b;
