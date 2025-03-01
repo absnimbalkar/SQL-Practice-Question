@@ -1,0 +1,16 @@
+Q. Methds to handle duplicate data in sql , and How would you pply them in a query
+
+select CustomerName,ContactNumber,City from customers
+union
+select CustomerName,ContactNumber,City
+
+or
+ 
+select CustomerName , City  ,avg (ContactNumber)from
+customers
+groupby CustomerName,City
+
+or 
+
+select distinct CustomerName,ContactNumber,City
+from Customers;
