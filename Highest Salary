@@ -1,0 +1,8 @@
+Q. Find Top 3 Employees with the highest Unique Salary in each Department
+
+Syntax : 
+
+with a as (select *,
+rank() over(partition by Department order by Salary desc) from employees)
+
+select * from a where rnk <=3;
